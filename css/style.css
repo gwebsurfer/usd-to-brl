@@ -1,0 +1,196 @@
+:root {
+    --bg-body: rgb(18, 18, 18);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-body);
+}
+
+h1 {
+    margin-bottom: 3.5rem;
+    font-size: 2.5rem;
+    color: rgb(62, 228, 79);
+    text-align: center;
+}
+
+input {
+    position: relative;
+    width: 206px;
+    height: 2.75rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border: .04rem solid rgb(113, 121, 135);
+    border-radius: 0.3rem;
+    background-color: transparent;
+    color: rgb(62, 228, 79);
+    outline: none;
+}
+
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(113, 121, 135);
+  }
+  
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(113, 121, 135);
+}
+  
+input::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(113, 121, 135);
+}
+
+input:focus {
+    border-color: rgb(29, 243, 161);
+}
+
+label {
+    position: absolute;
+    left: 0.8rem;
+    top: -0.4rem;
+    padding:0 0.2rem;
+    font-size: 0.688rem;
+    color: rgb(113, 121, 135);
+    background-color: var(--bg-body);
+}
+
+button {
+    margin-top: 24px;
+    width: 100%;
+    height: 2.75rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: rgb(26, 31, 41);
+    background-color: rgb(62, 228, 79);
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(40, 244, 61);
+    transition: all 0.2s ease 0s;
+}
+
+footer {
+    margin-bottom: 0;
+}
+
+.container-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    justify-content: center;
+    max-width: 484px;
+}
+
+.dollar-quotation {
+    align-self: center;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 0.4rem;
+}
+
+.inputs {
+    position: relative;
+    display: inline-flex;
+}
+
+.dollar {
+    position: inherit;
+}
+
+.real {
+    position: inherit;
+}
+
+.input-dollar {
+    padding-left: 3.4rem;
+}
+
+.input-real {
+    padding-left: 2.7rem;
+}
+
+.coin {
+    position: absolute;
+    left: 0.8rem;
+    top: 0.8rem;
+    padding:0 0.2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(113, 121, 135);
+}
+
+.icon-convert {
+    margin: auto;
+    padding: 0 24px;
+}
+
+.date {
+    margin-top: 3.5rem;
+    font-size: 0.688rem;
+    font-weight: 400;
+    color: rgb(87, 100, 104);
+    text-align: center;
+}
+
+@media only screen and (max-width: 484px) {
+    
+    h1 {
+        margin-top: 3rem;
+    }
+    
+    input {
+        width: 100%;
+        height: 3.5rem;
+    }
+
+    button {
+        margin-top: 2rem;
+        height: 3.5rem;
+    }
+
+    .container-main {
+        max-width: 340px;
+        display: block;
+    }
+
+    .inputs {
+        position: relative;
+        display: block;
+    }
+
+    .coin {
+        position: absolute;
+        top: 1.2rem;
+    }
+
+    .icon-convert {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 0;
+    }
+
+    .date {
+        margin-top: 2.5rem;
+        font-size: 0.75rem;
+    }
+}

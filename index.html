@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get the latest US Dollar to Brazilian Real rate for FREE with the original TradingView chart in real-time.">
+    <meta name="author" content="Gab - github.com/gwebsurfer">
+    <meta name="keywords" content="currency exchange, dollar to real, usd to brl, us dollar to brl, money conversion, currency converter, dollar converter, live exchange rate, real-time dollar">
+    
+    <title>USD to BRL - Convert United States Dollar to Brazilian Real</title>
+
+    <link rel="icon" type="image/x-icon" href="./img/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <main class="container-main">
+
+      <h1>USD to BRL</h1>
+
+        <section class="dollar-quotation">
+
+          <div class="inputs">
+
+            <div class="dollar">
+
+              <span class="coin">US$</span>
+              <input placeholder="1.00" class="input-dollar" type="text" name="inputDollar" id="inputDollar">
+              <label for="inputDollar">US Dollar</label>
+
+            </div>
+
+            <div class="icon-convert">
+              <img src="./img/icon-swap-horiz-rounded.svg" alt="Swap icon">
+            </div>
+                
+            <div class="real">
+
+              <span class="coin">R$</span>
+              <input placeholder="1,00" class="input-real" type="text" name="inputBrl" id="inputBrl">
+              <label for="inputBrl">Brazilian Real</label>
+
+            </div>
+
+          </div>
+
+          <button type="submit" id="btnConvert">Convert</button>
+
+        </section>
+
+        <div class="date" id="date">Loading time...</div>
+
+    </main>
+
+    <footer>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div id="tradingview_d97b8"></div>
+      </div>
+      <!-- TradingView Widget END -->
+    </footer>
+
+    <script src="./js/script.js"></script>
+    
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+    <script type="text/javascript">
+      new TradingView.MediumWidget(
+      {
+      "symbols": [
+        [
+          "1M",
+          "FX_IDC:USDBRL|1M"
+        ]
+      ],
+      "chartOnly": true,
+      "width": "100%",
+      "height": "240px",
+      "locale": "en",
+      "colorTheme": "dark",
+      "autosize": true,
+      "showVolume": false,
+      "hideDateRanges": false,
+      "hideMarketStatus": false,
+      "hideSymbolLogo": true,
+      "scalePosition": "right",
+      "scaleMode": "Normal",
+      "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+      "fontSize": "10",
+      "noTimeScale": false,
+      "valuesTracking": "1",
+      "changeMode": "price-and-percent",
+      "chartType": "area",
+      "backgroundColor": "rgba(25, 28, 35, 0)",
+      "dateFormat": "MMM dd, yyyy",
+      "lineWidth": 2,
+      "lineColor": "rgba(62, 228, 79, 1)",
+      "topColor": "rgba(62, 228, 79, 0.3)",
+      "bottomColor": "rgba(26, 31, 41, 0)"
+    }
+      );
+    </script>
+    
+
+</body>
+</html>
