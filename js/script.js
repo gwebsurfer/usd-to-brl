@@ -1,45 +1,99 @@
-/*
-
-fetch(
-    "https://free.currconv.com/api/v7/convert?q=USD_BRL,BRL_USD&compact=ultra&apiKey=38f5cc2783a36077be6b"
-  ).then((resposta) => console.log(resposta));
-
-*/
-
+const inputs = document.querySelectorAll('.input-clearable');
 const btnConvert = document.querySelector("#btnConvert");
+const inputUsd = document.querySelector("#inputUsd");
+const inputBrl = document.querySelector("#inputBrl");
+const dateSpan = document.querySelector("#date");
+let activeInput = inputBrl;
 
-btnConvert.onclick = fetchDollar;
-
-function parseJson(response) {
-    return response.json();
-}
-
-async function fetchDollar() {
-
-    const inputUsd = document.querySelector("#inputDollar").value;
-    const valueBrl = document.querySelector("#inputBrl");
-    
-    const data = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL')
-        .then(parseJson);
-
-    const valueDollar = data.USDBRL.ask;
-
-    valueBrl.value = (valueDollar * inputUsd).toLocaleString('pt-BR', {
-        maximumFractionDigits: '2'
+// Clear the value of all input elements with the class 'input-clearable'
+function clearInputs() {
+    inputs.forEach(input => {
+        input.value = '';
     });
-
 }
 
+// Add a click event listener to each input element with the class 'input-clearable'
+inputs.forEach(input => {
+    input.addEventListener('click', clearInputs);
+    input.addEventListener('input', async (e) => {
+        activeInput = e.target; // set the active input to the one that triggered the event
+        const exchangeRate = await fetchExchangeRate();
+        if (activeInput === inputBrl) {
+            updateValueUsd(exchangeRate);
+        } else if (activeInput === inputUsd) {
+            updateValueBrl(exchangeRate);
+        }
+    });
+});
+
+// Fetch the current USD to BRL exchange rate
+async function fetchExchangeRate() {
+    const response = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL');
+    const data = await response.json();
+    const exchangeRate = data.USDBRL.ask;
+    return exchangeRate;
+}
+
+// Format a currency value to BRL
+function formatCurrencyBrl(value) {
+    return value.toLocaleString('pt-BR', {
+        maximumFractionDigits: 2
+    });
+}
+
+// Format a currency value to USD
+function formatCurrencyUsd(value) {
+    return value.toLocaleString('en-US', {
+        maximumFractionDigits: 2
+    });
+}
+
+// Update the converted BRL value based on the current exchange rate
+function updateValueBrl(exchangeRate) {
+    const usdValue = Number(inputUsd.value);
+    const brlValue = usdValue * exchangeRate;
+    inputBrl.value = formatCurrencyBrl(brlValue);
+}
+
+// Update the converted USD value based on the current BRL input value
+function updateValueUsd(exchangeRate) {
+    const brlValue = Number(inputBrl.value);
+    const usdValue = brlValue / exchangeRate;
+    inputUsd.value = formatCurrencyUsd(usdValue);
+}
+
+// Refresh the current date and time display
 function refreshTime() {
-    
-    const showDate = document.querySelector("#date");
     const date = new Date();
-
-    showDate.innerHTML = date.toUTCString();
+    dateSpan.textContent = date.toUTCString();
+    setInitialConversion();
 }
 
-refreshTime()
+// Calculate the value of 1 USD in BRL based on the current exchange rate
+async function calculateUsdToBrlValue() {
+    const exchangeRate = await fetchExchangeRate();
+    return exchangeRate * 1;
+}
 
-setInterval(function() {
-    refreshTime()
-}, 1000);
+// Set the initial value of the BRL input placeholder to the current exchange rate from 1 USD to BRL
+async function setInitialConversion() {
+    const brlValue = await calculateUsdToBrlValue();
+    inputBrl.placeholder = formatCurrencyBrl(brlValue);
+}
+
+// Update the printed value of 1 USD in BRL
+async function updatePrintedUsdToBrlValue() {
+    const brlValue = await calculateUsdToBrlValue();
+    const formattedValue = formatCurrencyBrl(brlValue);
+    const printDollar = document.querySelector("#printDollar");
+    printDollar.innerHTML = `1 USD = ${formattedValue} BRL`;
+}
+
+// Add an event listener to the Convert button that triggers the conversion and update functions
+btnConvert.addEventListener('click', updatePrintedUsdToBrlValue);
+
+// Call the refreshTime function once and then at one second intervals to update the displayed time
+refreshTime();
+setInterval(refreshTime, 1000);
+
+setInitialConversion();

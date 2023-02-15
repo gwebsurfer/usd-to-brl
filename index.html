@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en-us">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
     <link rel="icon" type="image/x-icon" href="./img/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -30,8 +30,8 @@
             <div class="dollar">
 
               <span class="coin">US$</span>
-              <input placeholder="1.00" class="input-dollar" type="text" name="inputDollar" id="inputDollar">
-              <label for="inputDollar">US Dollar</label>
+              <input placeholder="1.00" class="input-dollar input-clearable" type="text" name="inputUsd" id="inputUsd">
+              <label for="inputUsd">US Dollar</label>
 
             </div>
 
@@ -42,7 +42,7 @@
             <div class="real">
 
               <span class="coin">R$</span>
-              <input placeholder="1,00" class="input-real" type="text" name="inputBrl" id="inputBrl">
+              <input placeholder="1,00" class="input-real input-clearable" type="text" name="inputBrl" id="inputBrl">
               <label for="inputBrl">Brazilian Real</label>
 
             </div>
@@ -52,6 +52,8 @@
           <button type="submit" id="btnConvert">Convert</button>
 
         </section>
+
+        <p id="printDollar"></p>
 
         <div class="date" id="date">Loading time...</div>
 
@@ -104,7 +106,7 @@
       "bottomColor": "rgba(26, 31, 41, 0)"
     }
       );
-    </script>
+    </script>   
     
 
 </body>
