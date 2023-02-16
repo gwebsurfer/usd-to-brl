@@ -12,7 +12,8 @@ Live preview: [gwebsurfer.github.io/usd-to-brl](https://gwebsurfer.github.io/usd
 - [x] Task 2 - Updated conversion as you type in both inputs;
 - [x] Task 3 - Real-time chart widget by TradingView;
 - [ ] Task 4 - Accept comma or period in both inputs;
-- [ ] Task 5 - Show daily variation data.
+- [ ] Task 5 - Show daily variation data;
+- [ ] Task 6 - Include other currencies, stocks, crypto, and a Compound Interest Calculator.
 
 ---
 Feel free to suggest other improvements. :vulcan_salute:
