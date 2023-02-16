@@ -30,7 +30,7 @@ inputs.forEach(input => {
 async function fetchExchangeRate() {
     const response = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL');
     const data = await response.json();
-    const exchangeRate = data.USDBRL.ask;
+    const exchangeRate = data.USDBRL.bid;
     return exchangeRate;
 }
 
