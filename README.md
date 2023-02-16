@@ -4,6 +4,8 @@
 
 > Convert USD to BRL - Get the latest US Dollar to Brazilian Real exchange rate in real-time for free. Includes the original TradingView chart widget for easy visualization.
 
+Live preview: [gwebsurfer.github.io/usd-to-brl](https://gwebsurfer.github.io/usd-to-brl)
+
 ### Adjustments and improvements
 
 - [x] Task 1 - Simple conversion in both fields using AwesomeApi;
